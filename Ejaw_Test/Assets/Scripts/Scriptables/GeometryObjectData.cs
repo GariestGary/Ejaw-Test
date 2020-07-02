@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Geometry Data", menuName = "ScriptableObjects/Geometry Object Data")]
 public class GeometryObjectData : ScriptableObject
 {
-    public List<TypeData> GeometryData = new List<TypeData>();
+    public List<TypeData> ClickData = new List<TypeData>();
 }
 
 [System.Serializable]

@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(MeshRenderer))]
 public class SpawnedObject : MonoBehaviour
 {
-	[SerializeField] private string _objectType;
+	[SerializeField] private string _objectType = "";
     private Material _material = null;
 	private Color _currentColor = Color.white;
 	private int _clicksCount = 0;
@@ -33,17 +33,16 @@ public class SpawnedObject : MonoBehaviour
 	public void Click()
 	{
 		_clicksCount++;
-		Debug.Log(_clicksCount);
 
-		for (int i = 0; i < GameManager.Instance.GeometryData.GeometryData.Count; i++)
+		for (int i = 0; i < GameManager.Instance.GeometryData.ClickData.Count; i++)
 		{
-			if (GameManager.Instance.GeometryData.GeometryData[i].ObjectType == _objectType)
+			if (GameManager.Instance.GeometryData.ClickData[i].ObjectType == _objectType)
 			{
-				for (int j = 0; j < GameManager.Instance.GeometryData.GeometryData[i].ClickColors.Count; j++)
+				for (int j = 0; j < GameManager.Instance.GeometryData.ClickData[i].ClickColors.Count; j++)
 				{
-					if (_clicksCount >= GameManager.Instance.GeometryData.GeometryData[i].ClickColors[j].MinClicksCount && _clicksCount <= GameManager.Instance.GeometryData.GeometryData[i].ClickColors[j].MaxClicksCount)
+					if (_clicksCount >= GameManager.Instance.GeometryData.ClickData[i].ClickColors[j].MinClicksCount && _clicksCount <= GameManager.Instance.GeometryData.ClickData[i].ClickColors[j].MaxClicksCount)
 					{
-						_currentColor = GameManager.Instance.GeometryData.GeometryData[i].ClickColors[j].Color;
+						_currentColor = GameManager.Instance.GeometryData.ClickData[i].ClickColors[j].Color;
 						_material.color = _currentColor;
 						return;
 					}
