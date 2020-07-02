@@ -9,7 +9,7 @@ public class Clicker : MonoBehaviour
 		GameManager.Instance.InitializePlayer(this);
 	}
 
-	public void SpawnObject()
+	public void Click()
 	{
 		Ray ray = Camera.main.ScreenPointToRay(GameManager.Instance.PlayerInput.PointerPosition);
 
@@ -17,19 +17,28 @@ public class Clicker : MonoBehaviour
 
 		if (Physics.Raycast(ray, out hit))
 		{
-			//TODO: prefab names from json
 			SpawnedObject spawnedobj = hit.transform.GetComponent<SpawnedObject>();
 
 			if (spawnedobj == null)
 			{
-				GameObject obj = Resources.Load<GameObject>("Prefabs/Cube");
-				Instantiate(obj, hit.point, Quaternion.identity);
+				Spawn(hit.point, Quaternion.identity);
 			}
 			else
 			{
-				
+				ClickOnObject(spawnedobj);
 			}
 		}
+	}
+
+	private void Spawn(Vector3 position, Quaternion rotation)
+	{
+			GameObject obj = Resources.Load<GameObject>("Prefabs/" + Database.Instance.FetchObjectNameById(Random.Range(0, Database.Instance.ObjectNamesCount)));
+			Instantiate(obj, position, rotation);
+	}
+
+	private void ClickOnObject(SpawnedObject obj)
+	{ 
+		
 	}
 
 }

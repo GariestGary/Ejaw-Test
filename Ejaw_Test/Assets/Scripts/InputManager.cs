@@ -16,7 +16,7 @@ public class InputManager : MonoBehaviour
 
 	public void InitializeControls()
 	{
-		_controls.Player.Click.performed += _ => GameManager.Instance.PlayerClicker.SpawnObject();
+		_controls.Player.Click.performed += _ => GameManager.Instance.PlayerClicker.Click();
 	}
 
 	private void OnEnable()

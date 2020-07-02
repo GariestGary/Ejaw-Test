@@ -1,18 +1,42 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
+[RequireComponent(typeof(MeshRenderer))]
 public class SpawnedObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] private string _objectType;
+    private Material _material = null;
+	private Color _currentColor = Color.white;
+	private int _clicksCount = 0;
+	private IDisposable _colorSwitchObserver = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Awake()
+	{
+		_material = GetComponent<MeshRenderer>().material;
+		_material.color = _currentColor; //Initializing object with white color
+
+		StartSwitchColors();
+	}
+
+	private void StartSwitchColors()
+	{
+		_colorSwitchObserver = Observable.Interval(new TimeSpan(0, 0, GameManager.Instance.Data.ObservableTimeSeconds)).Subscribe(_ =>
+		{
+			_currentColor = UnityEngine.Random.ColorHSV(0, 1, 0, 1, 0, 1);
+			_material.color = _currentColor;
+		});
+	}
+
+	public void Click()
+	{ 
+		
+	}
+
+	private void OnDestroy()
+	{
+		_colorSwitchObserver.Dispose();
+	}
 }

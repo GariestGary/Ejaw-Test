@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	public Clicker PlayerClicker { get; private set; }
 	public InputManager PlayerInput { get; private set; }
+
+	public GameData Data;
 	
 
 	void Awake()
@@ -23,10 +25,7 @@ public class GameManager : MonoBehaviour
 
 		PlayerInput = GetComponent<InputManager>();
 
-		if (PlayerInput == null)
-		{
-			Debug.LogError("Needs an InputManager attached to GameManager");
-		}
+		Data = Resources.Load<GameData>("ScriptableObjects/Game Data");
 	}
 
 	public void InitializePlayer(Clicker player)
