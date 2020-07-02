@@ -31,8 +31,25 @@ public class SpawnedObject : MonoBehaviour
 	}
 
 	public void Click()
-	{ 
-		
+	{
+		_clicksCount++;
+		Debug.Log(_clicksCount);
+
+		for (int i = 0; i < GameManager.Instance.GeometryData.GeometryData.Count; i++)
+		{
+			if (GameManager.Instance.GeometryData.GeometryData[i].ObjectType == _objectType)
+			{
+				for (int j = 0; j < GameManager.Instance.GeometryData.GeometryData[i].ClickColors.Count; j++)
+				{
+					if (_clicksCount >= GameManager.Instance.GeometryData.GeometryData[i].ClickColors[j].MinClicksCount && _clicksCount <= GameManager.Instance.GeometryData.GeometryData[i].ClickColors[j].MaxClicksCount)
+					{
+						_currentColor = GameManager.Instance.GeometryData.GeometryData[i].ClickColors[j].Color;
+						_material.color = _currentColor;
+						return;
+					}
+				}
+			}
+		}
 	}
 
 	private void OnDestroy()

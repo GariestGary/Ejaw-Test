@@ -37,8 +37,8 @@ public class Clicker : MonoBehaviour
 	}
 
 	private void ClickOnObject(SpawnedObject obj)
-	{ 
-		
+	{
+		obj.Click();
 	}
 
 }

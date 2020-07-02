@@ -34,7 +34,7 @@ public class Database : MonoBehaviour
 
 	private void ConstructDatabase()
 	{
-		data = JsonConvert.DeserializeObject<JArray>(File.ReadAllText(Application.streamingAssetsPath + "/objects.json"));
+		data = JsonConvert.DeserializeObject<JArray>(Resources.Load<TextAsset>("objects").text);
 
 		for (int i = 0; i < data.Count; i++)
 		{

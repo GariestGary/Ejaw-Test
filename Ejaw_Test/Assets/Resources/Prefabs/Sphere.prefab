@@ -104,3 +104,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94cc9098a0e8afa4492872b5af8625d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _objectType: Sphere

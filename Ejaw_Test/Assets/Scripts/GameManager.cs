@@ -7,8 +7,8 @@ public class GameManager : MonoBehaviour
 	public static GameManager Instance { get; private set; }
 	public Clicker PlayerClicker { get; private set; }
 	public InputManager PlayerInput { get; private set; }
-
-	public GameData Data;
+	public GameData Data { get; private set; }
+	public GeometryObjectData GeometryData { get; private set; }
 	
 
 	void Awake()
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
 		PlayerInput = GetComponent<InputManager>();
 
 		Data = Resources.Load<GameData>("ScriptableObjects/Game Data");
+		GeometryData = Resources.Load<GeometryObjectData>("ScriptableObjects/Geometry Data");
 	}
 
 	public void InitializePlayer(Clicker player)
