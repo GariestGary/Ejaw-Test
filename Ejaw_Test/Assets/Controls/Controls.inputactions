@@ -3,12 +3,12 @@
     "maps": [
         {
             "name": "Player",
-            "id": "d4ddf9e7-e480-4797-9b89-805d3e2f9532",
+            "id": "9fe82741-fcb6-4dd4-96e6-51db694bbae3",
             "actions": [
                 {
                     "name": "Click",
-                    "id": "33962c7f-137e-4e3f-a707-2d63174e163d",
-                    "expectedControlLayout": "",
+                    "id": "ce6991a7-efa5-465d-961c-1a580d769c94",
+                    "expectedControlLayout": "Button",
                     "continuous": false,
                     "passThrough": false,
                     "processors": "",
@@ -17,7 +17,7 @@
                 },
                 {
                     "name": "Position",
-                    "id": "0e667a6f-f4e0-49e1-b77c-9bea75212907",
+                    "id": "39969a63-dd17-4776-98d5-f6d772d3b4fd",
                     "expectedControlLayout": "Vector2",
                     "continuous": false,
                     "passThrough": true,
@@ -32,19 +32,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse",
-                    "action": "Click",
-                    "chainWithPrevious": false,
-                    "isComposite": false,
-                    "isPartOfComposite": false,
-                    "modifiers": ""
-                },
-                {
-                    "name": "",
-                    "path": "<Touchscreen>/touch",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse",
+                    "groups": "Mouse&Touch",
                     "action": "Click",
                     "chainWithPrevious": false,
                     "isComposite": false,
@@ -56,19 +44,7 @@
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Mouse",
-                    "action": "Position",
-                    "chainWithPrevious": false,
-                    "isComposite": false,
-                    "isPartOfComposite": false,
-                    "modifiers": ""
-                },
-                {
-                    "name": "",
-                    "path": "<Touchscreen>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse",
+                    "groups": "Mouse&Touch",
                     "action": "Position",
                     "chainWithPrevious": false,
                     "isComposite": false,
@@ -82,11 +58,11 @@
         {
             "name": "Mouse&Touch",
             "basedOn": "",
-            "bindingGroup": "Mouse",
+            "bindingGroup": "Mouse&Touch",
             "devices": [
                 {
                     "devicePath": "<Mouse>",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 },
                 {

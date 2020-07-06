@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System;
-using UnityEngine.Experimental.Input.Plugins.XR.Haptics;
 
 public class Database : MonoBehaviour
 {
